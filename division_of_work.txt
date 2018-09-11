@@ -1,0 +1,7 @@
+Codecool Music Library - division of work
+file_handler.py	- Michał
+music_reports.py - Aga
+inputs.py - Karolina
+main.py - Aga
+display.py - Aga
+
