@@ -8,26 +8,15 @@ def import_albums(filename = "text_albums_data.txt"):
         
         print(import_list)
         return import_list
-
+"""
 def export_albums(album_data, filename = "text_albums_data_export.txt"):
     with open(filename, "w") as data_export:
         for line in album_data:
             ','.join(line)
         print(album_data)
+        """
         
 
-"""
-def export_inventory(inventory, filename="export_inventory.csv"):
-    with open(filename, "w") as items_to_export:
-        for key, value in inventory.items():
-            for i in range(value):
-                items_to_export.write(key + ',')
-    with open(filename, 'rb+') as last_comma_deleter:
-        last_comma_deleter.seek(-1, os.SEEK_END)
-        last_comma_deleter.truncate()
-        """
-
-
-
 import_albums()
+#abc = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20']]
 export_albums(import_list)
