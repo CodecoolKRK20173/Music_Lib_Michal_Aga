@@ -19,4 +19,4 @@ def export_albums(album_data, filename = "text_albums_data_export.txt"):
 
 import_albums()
 #abc = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20']]
-export_albums(import_list)
+#export_albums(import_list)
