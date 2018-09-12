@@ -44,20 +44,49 @@ def search_menu():
     elif search_choice == '2':
         year_range()
     elif search_choice == '3':
-        show_shortest_longest_album(album_list, shortest)
+        show_shortest_longest_album(album_list, 'shortest')
     elif search_choice == '4':
-        show_shortest_longest_album(longest)
+        show_shortest_longest_album(album_list, 'longest')
     elif search_choice == '5':
-        artist_search()
+        artist_search(album_list)
     elif search_choice == '6':
-        album_name_search()
+        album_name_search(album_list)
     elif search_choice == '7':
         menu()
     else:
         print("Please enter a number from 1 to 7.")
         search_menu()
+def album_name_search(input_albums):
+    ask_user_about_album_name = input("Please enter album name you want to search for: ")
+    for album in  input_albums:
+        if album[1] ==ask_user_about_album_name:
+            print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
 
-
+def artist_search(input_albums):
+    ask_user_about_artist_name = input("Please enter full artist name you want to find : ")
+    artists = []
+    for album in input_albums:
+        artists.append(album[0])
+    if ask_user_about_artist_name in artists:    
+        for album in input_albums:
+            if ask_user_about_artist_name in album[0]:
+                print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+    else:
+        print('No album with given artist name.')    
+        
+'''
+def artist_search(input_albums):
+    loop_handling = True
+    while loop_handling:
+        ask_user_about_artist_name = input("Please enter full artist name you want to find : ")
+        for album in input_albums:
+            if album[0] == ask_user_about_artist_name:
+                print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+            else:
+                print("No artist !!")  
+                break
+        #loop_handling = False                              
+'''             
 def genre_search(input_albums):
     ask_user_about_genre = input("Please enter genre you want to find : ")
     for album in input_albums:
@@ -85,21 +114,31 @@ def year_search(input_albums):
             print('Please write year range in yyyy-yyyy format.')
            
             
-def show_shortest_longest_album(input_albums):
+def show_shortest_longest_album(input_albums, album_length):
+    actual_shortest_time = 10000
     actual_longest_time = 0
-    longest_album = []
+    shortest_longest_album = []
     for album in input_albums:
         album_time = album[4].split(':')
         album_time = [int(time) for time in album_time]
         album_time = album_time[0]*60 + album_time[1]
-        print(album_time)
-       
-        if album_time > actual_longest_time:
-            actual_longest_time = album_time
-            longest_album = album
-    print(longest_album)
+        #print(album_time)
+        if album_length == 'shortest':
+            if album_time < actual_shortest_time:
+                actual_shortest_time = album_time
+                shortest_longest_album = album
+        elif album_length == 'longest':
+            if album_time > actual_longest_time:
+                actual_longest_time = album_time
+                shortest_longest_album = album
+    print('| {} | {} | {} | {} | {} |'.format(shortest_longest_album[0], shortest_longest_album[1], shortest_longest_album[2], shortest_longest_album[3], shortest_longest_album[4]))
 
 
 album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
 #year_search(album_list)
-show_shortest_longest_album(album_list)
+#show_shortest_longest_album(album_list, 'shortest')
+#show_shortest_longest_album(album_list, 'longest')
+menu()
+#genre_search(album_list)
+#year_search(album_list)
+#artist_search(album_list)
