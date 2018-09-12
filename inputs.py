@@ -40,7 +40,7 @@ def search_menu():
                       Please enter your choice: """)    
 
     if search_choice == '1':
-        genre_search()
+        genre_search(album_list)
     elif search_choice == '2':
         year_range()
     elif search_choice == '3':
@@ -56,6 +56,16 @@ def search_menu():
     else:
         print("Please enter a number from 1 to 7.")
         search_menu()
+def genre_search(input_albums):
+    ask_user_about_genre = input("Please enter genre you want to find : ")
+    for album in input_albums:
+        if album[3] == ask_user_about_genre:
+            print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+           
+   
+
+
+
 
 album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
-menu()
+genre_search(album_list)
