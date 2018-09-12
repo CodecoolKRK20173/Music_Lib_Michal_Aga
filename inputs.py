@@ -1,5 +1,5 @@
 import sys
-
+# menu() and search_menu() need while loop!
 def menu():
     print("************MENU MUSIC**************\n")
 
@@ -42,7 +42,7 @@ def search_menu():
     if search_choice == '1':
         genre_search(album_list)
     elif search_choice == '2':
-        year_range()
+        year_search(album_list)
     elif search_choice == '3':
         show_shortest_longest_album(album_list, 'shortest')
     elif search_choice == '4':
@@ -56,44 +56,60 @@ def search_menu():
     else:
         print("Please enter a number from 1 to 7.")
         search_menu()
+
 def album_name_search(input_albums):
-    ask_user_about_album_name = input("Please enter album name you want to search for: ")
-    for album in  input_albums:
-        if album[1] ==ask_user_about_album_name:
-            print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+    loop_handling = True    
+    while loop_handling:
+        ask_user_about_album_name = input("Please enter album name you want to search for: ")
+        albums = []
+        for album_data in input_albums:
+            albums.append(album_data[1])
+        if ask_user_about_album_name in albums:    
+            for album in input_albums:
+                if ask_user_about_album_name in album[1]:
+                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+            loop_handling = False
+        else:
+            print('No album with given name on imported list.')
 
 def artist_search(input_albums):
-    ask_user_about_artist_name = input("Please enter full artist name you want to find : ")
-    artists = []
-    for album in input_albums:
-        artists.append(album[0])
-    if ask_user_about_artist_name in artists:    
-        for album in input_albums:
-            if ask_user_about_artist_name in album[0]:
-                print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
-    else:
-        print('No album with given artist name.')    
-        
-'''
-def artist_search(input_albums):
-    loop_handling = True
+    loop_handling = True    
     while loop_handling:
-        ask_user_about_artist_name = input("Please enter full artist name you want to find : ")
-        for album in input_albums:
-            if album[0] == ask_user_about_artist_name:
-                print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
-            else:
-                print("No artist !!")  
-                break
-        #loop_handling = False                              
-'''             
+        ask_user_about_artist_name = input("Please enter full artist name you want to find: ")
+        artists = []
+        for album_data in input_albums:
+            artists.append(album_data[0])
+        if ask_user_about_artist_name in artists:    
+            for album in input_albums:
+                if ask_user_about_artist_name in album[0]:
+                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+            loop_handling = False
+        else:
+            print('No artist with given name on imported list.')
+
+
+def genre_search(input_albums):
+    loop_handling = True    
+    while loop_handling:
+        ask_user_about_genre = input("Please enter full artist name you want to find: ")
+        genres = []
+        for album_data in input_albums:
+            genres.append(album_data[3])
+        if ask_user_about_genre in genres:    
+            for album in input_albums:
+                if ask_user_about_genre in album[3]:
+                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+            loop_handling = False
+        else:
+            print('No genre with given name on imported list.')                
+
+"""
 def genre_search(input_albums):
     ask_user_about_genre = input("Please enter genre you want to find : ")
     for album in input_albums:
         if album[3] == ask_user_about_genre:
             print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
-        
-     
+"""           
    
 def year_search(input_albums):
     loop_handling = True
@@ -102,12 +118,11 @@ def year_search(input_albums):
         if '-' in year_range:
             year_range = year_range.split('-')
             year_range = [int(year) for year in year_range]
-            print(year_range)
             for album in input_albums:
                 if int(album[2]) in range(year_range[0],year_range[1]+1):
                     print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
                 else:
-                    print('No album from given year range.')
+                    print('No album from given year range on imported list.')
                     break
             loop_handling = False
         else:
@@ -138,7 +153,7 @@ album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive r
 #year_search(album_list)
 #show_shortest_longest_album(album_list, 'shortest')
 #show_shortest_longest_album(album_list, 'longest')
-menu()
+search_menu()
 #genre_search(album_list)
 #year_search(album_list)
 #artist_search(album_list)
