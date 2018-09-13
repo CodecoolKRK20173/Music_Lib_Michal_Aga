@@ -4,8 +4,14 @@ def display_table_header():
     print('|{:^30}'.format("ARTIST NAME") + ('|{:^30}'.format("ALBUM NAME"))+ ('|{:^10}'.format("YEAR")) + ('|{:^30}'.format("GENRE")) + ('|{:^10}|'.format("TIME")) )
     print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
 
+<<<<<<< Updated upstream
 def display_album_to_print(album_print):
     print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album_print[0], album_print[1], album_print[2], album_print[3], album_print[4]))
+=======
+def display_album_to_print(album_to_print):
+    
+    print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album_to_print[0], album_to_print[1], album_to_print[2], album_to_print[3], album_to_print[4]))
+>>>>>>> Stashed changes
     print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
 
 
