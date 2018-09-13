@@ -22,14 +22,17 @@ def menu():
 
         if choice == "A" or choice == "a":
             os.system("clear")
+            display.logo_print()
             album_list = file_handler.import_albums("text_albums_data.txt")
         elif choice == "B" or choice == "b":
             os.system("clear")
+            display.logo_print()
             display.display_table_header()
             for album in album_list:
                 display.display_album_to_print(album)
         elif choice == "C" or choice == "c":
             os.system("clear")
+            display.logo_print()
             search_menu(album_list)
         elif choice == "D" or choice == "d":
             producereports()
@@ -56,18 +59,32 @@ def search_menu(album_list):
                         Please enter your choice: """)    
         
         if search_choice == '1':
+            os.system("clear")
+            display.logo_print()
             genre_search(album_list)
         elif search_choice == '2':
+            os.system("clear")
+            display.logo_print()
             year_search(album_list)
         elif search_choice == '3':
+            os.system("clear")
+            display.logo_print()
             show_shortest_longest_album(album_list, 'shortest')
         elif search_choice == '4':
+            os.system("clear")
+            display.logo_print()
             show_shortest_longest_album(album_list, 'longest')
         elif search_choice == '5':
+            os.system("clear")
+            display.logo_print()
             artist_search(album_list)
         elif search_choice == '6':
+            os.system("clear")
+            display.logo_print()
             album_name_search(album_list)
         elif search_choice == '7':
+            os.system("clear")
+            display.logo_print()
             menu()
         else:
             print("Please enter a number from 1 to 7.")
