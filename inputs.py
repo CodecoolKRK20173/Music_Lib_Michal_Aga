@@ -1,6 +1,8 @@
 import sys
+import os
 # menu() and search_menu() need while loop!
 def menu():
+    os.system("clear")
     print("************MENU MUSIC**************\n")
 
     choice = input("""
@@ -28,6 +30,7 @@ def menu():
         menu()
 
 def search_menu():
+    os.system("clear")
     search_choice = input("""
                       1: Find albums by genre
                       2: Find albums by year range
@@ -67,7 +70,7 @@ def album_name_search(input_albums):
         if ask_user_about_album_name in albums:    
             for album in input_albums:
                 if ask_user_about_album_name in album[1]:
-                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+                    print('|\t{}\t|\t{}\t|\t{}\t|\t{}\t|\t{}\t|'.format(album[0], album[1], album[2], album[3], album[4]))
             loop_handling = False
         else:
             print('No album with given name on imported list.')
@@ -98,19 +101,13 @@ def genre_search(input_albums):
         if ask_user_about_genre in genres:    
             for album in input_albums:
                 if ask_user_about_genre in album[3]:
-                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+                    print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
+                    print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album[0], album[1], album[2], album[3], album[4]))
+                    #print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
             loop_handling = False
         else:
             print('No genre with given name on imported list.')                
-
-"""
-def genre_search(input_albums):
-    ask_user_about_genre = input("Please enter genre you want to find : ")
-    for album in input_albums:
-        if album[3] == ask_user_about_genre:
-            print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
-"""           
-   
+  
 def year_search(input_albums):
     loop_handling = True
     while loop_handling:
@@ -137,7 +134,6 @@ def show_shortest_longest_album(input_albums, album_length):
         album_time = album[4].split(':')
         album_time = [int(time) for time in album_time]
         album_time = album_time[0]*60 + album_time[1]
-        #print(album_time)
         if album_length == 'shortest':
             if album_time < actual_shortest_time:
                 actual_shortest_time = album_time
@@ -153,7 +149,7 @@ album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive r
 #year_search(album_list)
 #show_shortest_longest_album(album_list, 'shortest')
 #show_shortest_longest_album(album_list, 'longest')
-search_menu()
-#genre_search(album_list)
+#search_menu()
+genre_search(album_list)
 #year_search(album_list)
 #artist_search(album_list)
