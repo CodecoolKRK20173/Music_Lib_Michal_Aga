@@ -1,36 +1,11 @@
-"""
-def print_album_info(album):
-    artist_index = 0
-    name_index = 1
 
-    print('Album: {} by {}'.format(album[name_index], album[artist_index]))
-    print(' | '.join(album[2:]))
-
-
-def print_albums_list(albums_data):
-    for album in albums_data:
-        print(' | '.join())
-
-
-def print_program_menu(menu_commands):
-    for option in menu_commands:
-        print(str(menu_commands.index(option)) + '----->' + option)
-
-
-def print_command_result(message):
-    vertical_spacing = 2
-    print(vertical_spacing * '\n' + message)
-
-def print_error_message(message):
-    print("ERROR: " + str(message))
-"""   
 def display_table_header():
     print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
     print('|{:^30}'.format("ARTIST NAME") + ('|{:^30}'.format("ALBUM NAME"))+ ('|{:^10}'.format("YEAR")) + ('|{:^30}'.format("GENRE")) + ('|{:^10}|'.format("TIME")) )
     print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
 
-def display_album_to_print(album_to_print):
-    print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album_to_print[0], album_to_print[1], album_to_print[2], album_to_print[3], album_to_print[4]))
+def display_album_to_print(album_print):
+    print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album_print[0], album_print[1], album_print[2], album_print[3], album_print[4]))
     print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
 
 

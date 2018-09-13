@@ -1,4 +1,4 @@
-def import_albums(filename = "/home/michal/Codecool/Python/TW week #2/Music_Lib_Michal_Aga/text_albums_data.txt"):
+def import_albums(filename = "text_albums_data.txt"):
     try:
         with open(filename, "r") as data_import:
             album_list = []

@@ -8,8 +8,8 @@ def menu():
     album_list = []
     loop_handling = True
     while loop_handling:
-        os.system("clear")
-        print("************MENU MUSIC**************\n")
+        #os.system("clear")
+        print("\n\t\t************MENU MUSIC**************\n")
 
         choice = input("""
                         A: Import Albums
@@ -21,16 +21,20 @@ def menu():
                         Please enter your choice: """)
 
         if choice == "A" or choice == "a":
-            album_list = file_handler.import_albums("/home/michal/Codecool/Python/TW week #2/Music_Lib_Michal_Aga/text_albums_data.txt")
+            os.system("clear")
+            album_list = file_handler.import_albums("text_albums_data.txt")
         elif choice == "B" or choice == "b":
-            viewstudentdetails()
+            os.system("clear")
+            display.display_table_header()
+            for album in album_list:
+                display.display_album_to_print(album)
         elif choice == "C" or choice == "c":
-            print(album_list)
+            os.system("clear")
             search_menu(album_list)
         elif choice == "D" or choice == "d":
             producereports()
         elif choice == "Q" or choice == "q":
-            sys.exit
+            sys.exit()
         else:
             print("You must only select either A,B,C, or D.")
             print("Please try again")
@@ -39,7 +43,7 @@ def menu():
 def search_menu(album_list):
     loop_handling = True
     while loop_handling:
-        os.system("clear")
+        #os.system("clear")
         search_choice = input("""
                         1: Find albums by genre
                         2: Find albums by year range
