@@ -1,6 +1,7 @@
 import sys
 import os
 import file_handler
+import display
 # menu() and search_menu() need while loop!
 def menu():
     loop_handling = True
@@ -33,35 +34,36 @@ def menu():
             
 
 def search_menu():
-    os.system("clear")
-    search_choice = input("""
-                      1: Find albums by genre
-                      2: Find albums by year range
-                      3: Show the shortest album
-                      4: Show the longest album
-                      5: Find albums created by given artist
-                      6: Find album by album name
-                      7: Quit to main menu
+    loop_handling = True
+    while loop_handling:
+        os.system("clear")
+        search_choice = input("""
+                        1: Find albums by genre
+                        2: Find albums by year range
+                        3: Show the shortest album
+                        4: Show the longest album
+                        5: Find albums created by given artist
+                        6: Find album by album name
+                        7: Quit to main menu
 
-                      Please enter your choice: """)    
-    
-    if search_choice == '1':
-        genre_search(album_list)
-    elif search_choice == '2':
-        year_search(album_list)
-    elif search_choice == '3':
-        show_shortest_longest_album(album_list, 'shortest')
-    elif search_choice == '4':
-        show_shortest_longest_album(album_list, 'longest')
-    elif search_choice == '5':
-        artist_search(album_list)
-    elif search_choice == '6':
-        album_name_search(album_list)
-    elif search_choice == '7':
-        menu()
-    else:
-        print("Please enter a number from 1 to 7.")
-        search_menu()
+                        Please enter your choice: """)    
+        
+        if search_choice == '1':
+            genre_search(album_list)
+        elif search_choice == '2':
+            year_search(album_list)
+        elif search_choice == '3':
+            show_shortest_longest_album(album_list, 'shortest')
+        elif search_choice == '4':
+            show_shortest_longest_album(album_list, 'longest')
+        elif search_choice == '5':
+            artist_search(album_list)
+        elif search_choice == '6':
+            album_name_search(album_list)
+        elif search_choice == '7':
+            menu()
+        else:
+            print("Please enter a number from 1 to 7.")
 
 def album_name_search(input_albums):
     loop_handling = True    
@@ -71,9 +73,10 @@ def album_name_search(input_albums):
         for album_data in input_albums:
             albums.append(album_data[1])
         if ask_user_about_album_name in albums:    
+            display.display_table_header()
             for album in input_albums:
                 if ask_user_about_album_name in album[1]:
-                    print('|\t{}\t|\t{}\t|\t{}\t|\t{}\t|\t{}\t|'.format(album[0], album[1], album[2], album[3], album[4]))
+                    display.display_album_to_print(album)
             loop_handling = False
         else:
             print('No album with given name on imported list.')
@@ -86,9 +89,10 @@ def artist_search(input_albums):
         for album_data in input_albums:
             artists.append(album_data[0])
         if ask_user_about_artist_name in artists:    
+            display.display_table_header()
             for album in input_albums:
                 if ask_user_about_artist_name in album[0]:
-                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+                    display.display_album_to_print(album)
             loop_handling = False
         else:
             print('No artist with given name on imported list.')
@@ -102,11 +106,10 @@ def genre_search(input_albums):
         for album_data in input_albums:
             genres.append(album_data[3])
         if ask_user_about_genre in genres:    
+            display.display_table_header()
             for album in input_albums:
                 if ask_user_about_genre in album[3]:
-                    print('+' + '=' * 30 + '+' + '=' * 30 + '+' + '=' * 10 + '+' + '=' * 30 + '+' + '=' * 10 + '+')
-                    print('|{:^30}|{:^30}|{:^10}|{:^30}|{:^10}|'.format(album[0], album[1], album[2], album[3], album[4]))
-                    #print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+                    display.display_album_to_print(album)
             loop_handling = False
         else:
             print('No genre with given name on imported list.')                
@@ -118,9 +121,10 @@ def year_search(input_albums):
         if '-' in year_range:
             year_range = year_range.split('-')
             year_range = [int(year) for year in year_range]
+            display.display_table_header()
             for album in input_albums:
                 if int(album[2]) in range(year_range[0],year_range[1]+1):
-                    print('| {} | {} | {} | {} | {} |'.format(album[0], album[1], album[2], album[3], album[4]))
+                    display.display_album_to_print(album)
                 else:
                     print('No album from given year range on imported list.')
                     break
@@ -145,14 +149,14 @@ def show_shortest_longest_album(input_albums, album_length):
             if album_time > actual_longest_time:
                 actual_longest_time = album_time
                 shortest_longest_album = album
-    print('| {} | {} | {} | {} | {} |'.format(shortest_longest_album[0], shortest_longest_album[1], shortest_longest_album[2], shortest_longest_album[3], shortest_longest_album[4]))
+    display.display_table_header()
+    display.display_album_to_print(album)
 
-
-#album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
+album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
 #year_search(album_list)
 #show_shortest_longest_album(album_list, 'shortest')
 #show_shortest_longest_album(album_list, 'longest')
 #search_menu()
-#genre_search(album_list)
+genre_search(album_list)
 #year_search(album_list)
 #artist_search(album_list)
