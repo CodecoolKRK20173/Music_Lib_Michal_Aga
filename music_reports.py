@@ -4,16 +4,25 @@ import os
 
 def display_raport(album_list):
     os.system("clear")
-    print("Music Library Raport: ")
+    print("""
+  _____            _____   ____  _____ _______ 
+ |  __ \     /\   |  __ \ / __ \|  __ \__   __|
+ | |__) |   /  \  | |__) | |  | | |__) | | |   
+ |  _  /   / /\ \ |  ___/| |  | |  _  /  | |   
+ | | \ \  / ____ \| |    | |__| | | \ \  | |   
+ |_|  \_\/_/    \_\_|     \____/|_|  \_\ |_|   
+                                               
+                                               
+""")
     print("Number of artists: {}".format(count_artists(album_list)))
-    print("Number of albums: {}".format(count_albums(album_list)))
-    print("Number of genres: {}".format(count_genres(album_list)))
-    print("\nThe longest album: ") 
+    print("Number of albums:  {}".format(count_albums(album_list)))
+    print("Number of genres:  {}".format(count_genres(album_list)))
+    print("\nThe longest album: ")
     inputs.show_shortest_longest_album(album_list, 'longest')
     print("\nThe shortest album: ")
     inputs.show_shortest_longest_album(album_list, 'shortest')
-    print("\nThe oldest album: ")
-    print("\nThe newest album: ")
+    #print("\n\tThe oldest album: ")
+    #print("\n\tThe newest album: ")
     
     print("\nAll imported albums: ")
     display.display_table_header()
@@ -45,6 +54,6 @@ def count_genres(input_list):
     return genres_number
 
 
-album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
+#album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
 #print(count_genres(album_list))
-display_raport(album_list)
+#display_raport(album_list)
