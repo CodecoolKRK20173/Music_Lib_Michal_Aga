@@ -6,6 +6,7 @@ import os
 
 def main():
     os.system("clear")
+    display.logo_print()
     inputs.menu()
 
 if __name__ == '__main__':
