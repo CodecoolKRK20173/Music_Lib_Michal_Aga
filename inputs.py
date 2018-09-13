@@ -1,33 +1,36 @@
 import sys
 import os
+import file_handler
 # menu() and search_menu() need while loop!
 def menu():
-    os.system("clear")
-    print("************MENU MUSIC**************\n")
+    loop_handling = True
+    while loop_handling:
+        os.system("clear")
+        print("************MENU MUSIC**************\n")
 
-    choice = input("""
-                      A: Import/Export
-                      B: Display Albums
-                      C: Album Search
-                      D: Reports
-                      Q: Quit
+        choice = input("""
+                        A: Import/Export
+                        B: Display Albums
+                        C: Album Search
+                        D: Reports
+                        Q: Quit
 
-                      Please enter your choice: """)
+                        Please enter your choice: """)
 
-    if choice == "A" or choice =="a":
-        import_albums() #function from file_handler.py
-    elif choice == "B" or choice =="b":
-        viewstudentdetails()
-    elif choice == "C" or choice =="c":
-        search_menu()
-    elif choice=="D" or choice=="d":
-        producereports()
-    elif choice=="Q" or choice=="q":
-        sys.exit
-    else:
-        print("You must only select either A,B,C, or D.")
-        print("Please try again")
-        menu()
+        if choice == "A" or choice =="a":
+            file_handler.import_albums() #function from file_handler.py
+        elif choice == "B" or choice =="b":
+            viewstudentdetails()
+        elif choice == "C" or choice =="c":
+            search_menu()
+        elif choice=="D" or choice=="d":
+            producereports()
+        elif choice=="Q" or choice=="q":
+            sys.exit
+        else:
+            print("You must only select either A,B,C, or D.")
+            print("Please try again")
+            
 
 def search_menu():
     os.system("clear")
@@ -145,11 +148,11 @@ def show_shortest_longest_album(input_albums, album_length):
     print('| {} | {} | {} | {} | {} |'.format(shortest_longest_album[0], shortest_longest_album[1], shortest_longest_album[2], shortest_longest_album[3], shortest_longest_album[4]))
 
 
-album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
+#album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
 #year_search(album_list)
 #show_shortest_longest_album(album_list, 'shortest')
 #show_shortest_longest_album(album_list, 'longest')
 #search_menu()
-genre_search(album_list)
+#genre_search(album_list)
 #year_search(album_list)
 #artist_search(album_list)
