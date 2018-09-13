@@ -2,7 +2,7 @@ import sys
 import os
 import file_handler
 import display
-import main
+import music_reports
 
 def menu():
     album_list = []
@@ -15,7 +15,7 @@ def menu():
                         A: Import Albums
                         B: Display Albums
                         C: Album Search
-                        D: Reports
+                        D: Report
                         Q: Quit
 
                         Please enter your choice: """)
@@ -35,7 +35,9 @@ def menu():
             display.logo_print()
             search_menu(album_list)
         elif choice == "D" or choice == "d":
-            producereports()
+            os.system("clear")
+            display.logo_print()
+            music_reports.display_raport(album_list)
         elif choice == "Q" or choice == "q":
             sys.exit()
         else:
