@@ -91,7 +91,7 @@ def artist_search(input_albums):
 def genre_search(input_albums):
     loop_handling = True    
     while loop_handling:
-        ask_user_about_genre = input("Please enter full artist name you want to find: ")
+        ask_user_about_genre = input("Please enter genre you want to find: ")
         genres = []
         for album_data in input_albums:
             genres.append(album_data[3])
