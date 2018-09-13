@@ -1,6 +1,6 @@
 import inputs
 import file_handler
-#import display
+import display
 #import music_reports
 
 def main():
