@@ -39,6 +39,7 @@ def menu():
             display.logo_print()
             music_reports.display_raport(album_list)
         elif choice == "Q" or choice == "q":
+            os.system("clear")
             print("""\033[1;31m
             
            )               (         (     
