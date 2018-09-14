@@ -4,7 +4,7 @@ import os
 
 def display_raport(album_list):
     os.system("clear")
-    print("""
+    print("""'\033[1;32m
   _____            _____   ____  _____ _______ 
  |  __ \     /\   |  __ \ / __ \|  __ \__   __|
  | |__) |   /  \  | |__) | |  | | |__) | | |   
@@ -12,7 +12,7 @@ def display_raport(album_list):
  | | \ \  / ____ \| |    | |__| | | \ \  | |   
  |_|  \_\/_/    \_\_|     \____/|_|  \_\ |_|   
                                                
-                                               
+  \033[1;m                                             
 """)
     print("Number of artists: {}".format(count_artists(album_list)))
     print("Number of albums:  {}".format(count_albums(album_list)))
