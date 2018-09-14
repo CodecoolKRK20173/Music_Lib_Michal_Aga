@@ -39,6 +39,19 @@ def menu():
             display.logo_print()
             music_reports.display_raport(album_list)
         elif choice == "Q" or choice == "q":
+            print("""\033[1;31m
+            
+           )               (         (     
+   (    ( /(               )\ )      )\ )  
+ ( )\   )\()) (        (  (()/( (   (()/(  
+ )((_) ((_)\  )\       )\  /(_)))\   /(_)) 
+((_)_ __ ((_)((_)   _ ((_)(_)) ((_) (_))   
+ | _ )\ \ / /| __| | | | |/ __|| __|| _ \  
+ | _ \ \ V / | _|  | |_| |\__ \| _| |   /  
+ |___/  |_|  |___|  \___/ |___/|___||_|_\  
+                                           
+    \033[1;m
+            """)
             sys.exit()
         else:
             print("You must only select either A,B,C, or D.")
