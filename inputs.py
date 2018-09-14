@@ -68,7 +68,7 @@ def search_menu(album_list):
                         2: Find albums by year range
                         3: Show the shortest album
                         4: Show the longest album
-                        5: Find albums created by given artist
+                        5: Find albums by artist
                         6: Find album by album name
                         7: Quit to main menu
 
@@ -108,7 +108,7 @@ def search_menu(album_list):
 def album_name_search(input_albums):
     loop_handling = True    
     while loop_handling:
-        ask_user_about_album_name = input("Please enter album name you want to search for: ")
+        ask_user_about_album_name = input("Please enter album name you want to search for: ").title()
         albums = []
         for album_data in input_albums:
             albums.append(album_data[1])
@@ -124,7 +124,7 @@ def album_name_search(input_albums):
 def artist_search(input_albums):
     loop_handling = True    
     while loop_handling:
-        ask_user_about_artist_name = input("Please enter full artist name you want to find: ")
+        ask_user_about_artist_name = input("Please enter full artist name you want to find: ").title()
         artists = []
         for album_data in input_albums:
             artists.append(album_data[0])
@@ -174,13 +174,16 @@ def year_search(input_albums):
            
             
 def show_shortest_longest_album(input_albums, album_length):
-    actual_shortest_time = 10000
+    actual_shortest_time = 1000000
     actual_longest_time = 0
     shortest_longest_album = []
+    SECONDS_IN_MINUTE = 60
+    
     for album in input_albums:
         album_time = album[4].split(':')
         album_time = [int(time) for time in album_time]
-        album_time = album_time[0]*60 + album_time[1]
+        album_time = album_time[0] * SECONDS_IN_MINUTE + album_time[1]
+        
         if album_length == 'shortest':
             if album_time < actual_shortest_time:
                 actual_shortest_time = album_time
@@ -189,8 +192,9 @@ def show_shortest_longest_album(input_albums, album_length):
             if album_time > actual_longest_time:
                 actual_longest_time = album_time
                 shortest_longest_album = album
+    
     display.display_table_header()
-    display.display_album_to_print(album)
+    display.display_album_to_print(shortest_longest_album)
 
 #album_list = [['Pink Floyd', 'The Dark Side Of The Moon', '1973', 'progressive rock', '43:00'], ['Britney Spears', 'Baby One More Time', '1999', 'pop', '42:20'], ['The Beatles', 'Revolver', '1966', 'rock', '34:43'], ['Deep Purple', 'Machine Head', '1972', 'hard rock', '37:25'], ['Old Timers', 'Old Time', '966', 'ancient', '123:45'], ['Pink Floyd', 'Wish You Were Here', '1975', 'progressive rock', '44:28'], ['Boston', 'Boston', '1976', 'hard rock', '37:41'], ['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26'], ['rock', 'rock', '966', 'pop', '13:37'], ['Massive Attack', 'Blue Lines', '1991', 'hip hop', '45:02']]
 #year_search(album_list)
