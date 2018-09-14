@@ -7,7 +7,7 @@ def import_albums(filename = "text_albums_data.txt"):
             album_list = [x.strip() for x in album_list]
             album_list = [line.split(',') for line in album_list]
             
-            print("Imported data from {}".format(filename))
+            print("\t\tImported data from {}".format(filename))
 
             return album_list
     except:
